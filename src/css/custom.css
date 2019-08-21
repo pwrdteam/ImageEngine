@@ -1,0 +1,11 @@
+.subheading{
+    padding: 1% 2%;
+    background-color: #FFAF07;
+    color: rgb(0, 0, 0);
+    font-size: 15pt;
+}
+.subheading h3{
+        font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
