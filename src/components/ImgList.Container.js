@@ -4,6 +4,7 @@ import ImgListComponent from './ImgList.Component';
 export default class ImgListContainer extends Component {
     constructor(props){
         super(props);
+        this.fileUpload = this.fileUpload.bind(this);
         this.clickHandle = this.clickHandle.bind(this);
         this.state = {
             totalImgs: 0,
@@ -20,7 +21,7 @@ export default class ImgListContainer extends Component {
 
     fileUpload(el){
         el.preventDefault();
-        console.log('fileUpload',el);
+        //console.log('fileUpload',el);
         debugger;
         var F = el.target.files[0];
         var reader = new FileReader();
