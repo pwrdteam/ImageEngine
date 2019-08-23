@@ -21,7 +21,10 @@ export default class ImgListContainer extends Component {
         loopLength = imgRangeEnd-imgRangeStart;
         for (var i = 0; i <= loopLength; i++) {
             objImg[i] = {imgUrl:`https://picsum.photos/id/${imgRangeStart}/400`,id: imgRangeStart};
-            objImgEng[i] = {imgUrl:`http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/${imgRangeStart}/400`,id: imgRangeStart};
+            objImgEng[i] = { id: imgRangeStart,
+                imgUrl:`http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/${imgRangeStart}/400`,
+                imgEngUrl:'http://pwrdtest.powerweaveonline.com/',
+                picUrl:`https://picsum.photos/id/${imgRangeStart}/400`};
             imgRangeStart++;
         }
         this.setState((state, props) => ({
@@ -32,33 +35,26 @@ export default class ImgListContainer extends Component {
     }
 
     componentDidMount(){
-        console.log('componentDidMount',this.state);
+        //console.log('componentDidMount',this.state);
     }
 
     clickHandle(e){
         e.preventDefault();
-        console.log('clickHandle',e);
+        //console.log('clickHandle',e);
     }
     changeDirective(e){
         e.preventDefault();
-        console.log('changeDirective',e.target.value);
-        debugger;
-        //var x = document.getElementById("mySelect").value;
-        let imgUrl="http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/100/400";
-        var ul = document.getElementById("ulImgEng");
-        var items = ul.getElementsByTagName("li");
-        for (var i = 0; i < items.length; ++i) {
-            let img = items[i].getElementsByTagName('img')[0];
-            //items[i].firstElementChild.src = items[i].firstElementChild.src.replace('r_0',e.target.value);
-            img.src = img.src.replace('r_0',e.target.value);
-        }
-        if (e.target.selectedIndex===10){
-            var x = e.target.value;
-            document.getElementById("demo").innerHTML = "You selected: " + x;
-            document.getElementById('img1')
-            .setAttribute(
-                'src', `${imgUrl.replace('r_0',x)}`
-            );
+        let directive = e.target.value;
+        if (e.target.selectedIndex!==0){            
+            var ul = document.getElementById("ulImgEng");
+            var items = ul.getElementsByTagName("li");
+            for (var i = 0; i < items.length; ++i) {
+                let img = items[i].getElementsByTagName('img')[0];
+                let imgEngUrl = img.getAttribute('imgengurl');
+                let picUrl = img.getAttribute('picurl');
+                let imgUrl = `${imgEngUrl+directive}/${picUrl}`;
+                img.src = imgUrl;
+            }
         }
     }
 
