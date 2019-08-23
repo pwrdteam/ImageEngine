@@ -1,10 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
-import 'bootstrap/dist/css/bootstrap.min.css';
-=======
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/bootstrap.min.css';
->>>>>>> 430e229fe6b0b31a261c8d591c6e993c0ecd6c05
 
 const ImgListComponent = (props) => {
     return (
@@ -23,11 +19,7 @@ const ImgListComponent = (props) => {
                                 <div className="panel-heading">
                                     <h3>Without Image Engine</h3>
                                     <select className="btn btn-default">
-<<<<<<< HEAD
-                                    <option value="select_image_range" selected> Select Image Range</option>    
-=======
                                     <option value="select_image_range">Select Image Range</option>    
->>>>>>> 430e229fe6b0b31a261c8d591c6e993c0ecd6c05
                                     <option value="701-706">701-710</option>
                                     <option value="711-716">711-720</option>
                                     <option value="721-726">721-730</option>
@@ -42,41 +34,13 @@ const ImgListComponent = (props) => {
                                 </div>
                                 
                                  <div className="panel-body" id="normail-call">
-<<<<<<< HEAD
-                                    <ul>
-                                     <li><img src="https://picsum.photos/id/781/400/400"  alt="" title="" /></li>
-                                     <li><img src="https://picsum.photos/id/782/400/400" alt="" title="" /></li>
-                                     <li><img src="https://picsum.photos/id/783/400/400"  alt="" title="" /></li>
-                                     <li><img src="https://picsum.photos/id/784/400/400" alt="" title="" /></li>
-                                     <li><img src="https://picsum.photos/id/785/400/400"  alt="" title="" /></li>
-                                     <li><img src="https://picsum.photos/id/786/400/400" alt="" title="" /></li>
-                                     </ul>    
-                                 </div>   
-=======
                                     <ul>{CreateImg(props.imgData)}</ul>
                                  </div>
->>>>>>> 430e229fe6b0b31a261c8d591c6e993c0ecd6c05
                                 </div>
                             </div>
 
                             {/* SECOND COLUMN */}
                             <div className="col-md-6 text-center">
-<<<<<<< HEAD
-                                <div className=" panel panel-primary">
-                                <div className="panel-heading">
-                                    <h3>With Image Engine</h3>
-                                   
-                                    <div id="usr-opt">
-                                   
-                                    <select className="btn btn-default mr-3" id="mode_dir">
-                                    <option value="directives" selected> Directives</option>    
-                                    <option value=""></option>
-                                   </select>
-                                   
-                                   <select className="btn btn-default" id="usr_fit">
-                                    <option value="fit_method" selected> Fit Method</option>    
-                                    <option value=""></option>
-=======
                                 <div className="panel panel-primary">
                                 <div className="panel-heading">
                                     <h3>With Image Engine</h3>
@@ -93,43 +57,14 @@ const ImgListComponent = (props) => {
                                    
                                    <select className="btn btn-default" id="usr_fit">
                                     <option value="fit_method" selected>Fit Method</option>
->>>>>>> 430e229fe6b0b31a261c8d591c6e993c0ecd6c05
                                    </select>
                                    
                                    </div>
                                    </div>
                                 
                                 <div className="panel-body"  id="service-engine-call">
-<<<<<<< HEAD
-                                   <ul>
-                                    <li>
-                                    <img src="http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/781/400" alt="" title="" rel="preconnect" />
-                                    </li>
-                                    <li>
-                                    <img src="http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/782/400" alt="" title="" rel="preconnect" />
-                                    </li>
-                                    <li>
-                                    <img src="http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/783/400" alt="" title="" rel="preconnect" />
-                                    </li>
-                                    <li>
-                                    <img src="http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/784/400" alt="" title="" rel="preconnect" />
-                                    </li>
-                                    <li>
-                                    <img src="http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/785/400" alt="" title="" rel="preconnect" />
-                                    </li>
-                                    <li>
-                                    <img src="http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/786/400" alt="" title="" rel="preconnect" />
-                                    </li>
-                                    </ul>     
-                                </div>   
-
-                                {/* <input type="file" id="file_upload" onChange={props.fileUpload} /> */}
-                                {/* <button id="btnUpload" onClick={props.clickHandle}>Upload</button> */}
-                                {/* <img id="img2" src={require('../css/images/15.png')} className="img-responsive" alt="" /> */}
-=======
                                     <ul id="ulImgEng">{CreateImg(props.imgEngData)}</ul>
                                 </div>
->>>>>>> 430e229fe6b0b31a261c8d591c6e993c0ecd6c05
 
                                 </div>
                             </div>
