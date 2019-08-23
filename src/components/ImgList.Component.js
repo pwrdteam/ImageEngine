@@ -82,6 +82,6 @@ export default ImgListComponent;
 
 export const CreateImg = (data) => {
     return (
-        data.map(info => <li key={info.id}><img id={info.id} src={info.imgUrl}  alt="" title="" /></li>)        
+        data.map(info => <li key={info.id}><img id={info.id} src={info.imgUrl} imgEngUrl={info.imgEngUrl} picUrl={info.picUrl}  alt="" title="" /></li>)        
     )
 };
