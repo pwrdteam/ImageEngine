@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/custom.css';
+//import App from './App';
 import ImgListContainer from './components/ImgList.Container';
 import * as serviceWorker from './serviceWorker';
 
