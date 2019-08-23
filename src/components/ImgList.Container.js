@@ -5,12 +5,15 @@ export default class ImgListContainer extends Component {
     constructor(props){
         super(props);
         this.clickHandle = this.clickHandle.bind(this);
+<<<<<<< HEAD
+=======
         this.changeDirective = this.changeDirective.bind(this);
         this.state = {
             imgRange: {start:981,end:986},
             imgData: [],
             imgEngData: []
         };
+>>>>>>> 430e229fe6b0b31a261c8d591c6e993c0ecd6c05
     }
 
     componentWillMount(){
@@ -40,7 +43,13 @@ export default class ImgListContainer extends Component {
 
     clickHandle(e){
         e.preventDefault();
+<<<<<<< HEAD
         //console.log('clickHandle',e);
+=======
+        console.log('clickHandle',e);
+<<<<<<< HEAD
+=======
+>>>>>>> 2fe86faebecfd5793091ee253ba418caf1330b0d
     }
     changeDirective(e){
         e.preventDefault();
@@ -56,6 +65,7 @@ export default class ImgListContainer extends Component {
                 img.src = imgUrl;
             }
         }
+>>>>>>> 430e229fe6b0b31a261c8d591c6e993c0ecd6c05
     }
 
     render() {
