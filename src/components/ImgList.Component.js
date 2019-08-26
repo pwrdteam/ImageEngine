@@ -18,18 +18,18 @@ const ImgListComponent = (props) => {
                                     <div className="panel panel-default">
                                 <div className="panel-heading">
                                     <h3>Without Image Engine</h3>
-                                    <select className="btn btn-default">
-                                    <option value="select_image_range">Select Image Range</option>    
-                                    <option value="701-706">701-710</option>
-                                    <option value="711-716">711-720</option>
-                                    <option value="721-726">721-730</option>
-                                    <option value="731-736">731-740</option>
-                                    <option value="741-746">741-750</option>
-                                    <option value="751-756">751-760</option>
-                                    <option value="761-766">761-770</option>
-                                    <option value="771-776">771-780</option>
-                                    <option value="781-786">781-790</option>
-                                    <option value="791-796">791-800</option>
+                                    <select className="btn btn-default" id="sort_list" onChange={props.imgSortList}>
+                                    <option value="none" defaultValue>Filter List</option>
+                                    <option value="701-706">701-706</option>
+                                    <option value="711-716">711-716</option>
+                                    <option value="721-726">721-726</option>
+                                    <option value="731-736">731-736</option>
+                                    <option value="741-746">741-746</option>
+                                    <option value="751-756">751-756</option>
+                                    <option value="761-766">761-766</option>
+                                    <option value="771-776">771-766</option>
+                                    <option value="781-786">781-786</option>
+                                    <option value="791-796">791-796</option>
                                     </select>
                                 </div>
                                 
@@ -55,9 +55,9 @@ const ImgListComponent = (props) => {
                                     <option value="s_50">sharpening the image</option>
                                    </select>
                                    
-                                   <select className="btn btn-default" id="usr_fit">
-                                    <option value="fit_method" selected>Fit Method</option>
-                                   </select>
+                                   {/* <select className="btn btn-default" id="usr_fit">
+                                    <option value="fit_method">Fit Method</option>
+                                   </select> */}
                                    
                                    </div>
                                    </div>
@@ -79,9 +79,10 @@ const ImgListComponent = (props) => {
 }
 export default ImgListComponent;
 
+// export const CreateImg = (data) => {
+//     return (
+//         data.map(info => <li key={info.id}><img id={info.id} src={info.imgUrl} imgengurl={info.imgEngUrl} picurl={info.picUrl}  alt="" title="" /></li>)
+//     )
+// };
 
-export const CreateImg = (data) => {
-    return (
-        data.map(info => <li key={info.id}><img id={info.id} src={info.imgUrl} imgEngUrl={info.imgEngUrl} picUrl={info.picUrl}  alt="" title="" /></li>)        
-    )
-};
+const CreateImg = data => data.map(info => <li key={info.id}><img id={info.id} src={info.imgUrl} imgengurl={info.imgEngUrl} picurl={info.picUrl}  alt="" title="" /></li>)

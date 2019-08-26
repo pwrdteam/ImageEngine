@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import ImgListComponent from './ImgList.Component';
 
 export default class ImgListContainer extends Component {
     constructor(props){
         super(props);
-        this.clickHandle = this.clickHandle.bind(this);
+        this.imgSortList = this.imgSortList.bind(this);
         this.changeDirective = this.changeDirective.bind(this);
+        this.updateImages = this.updateImages.bind(this);
+        this.getImgInfo = this.getImgInfo.bind(this);
         this.state = {
             imgRange: {start:981,end:986},
             imgData: [],
@@ -14,34 +17,64 @@ export default class ImgListContainer extends Component {
     }
 
     componentWillMount(){
-        console.log('componentWillMount');
-        let objImg=[], objImgEng=[], imgRangeStart=0, imgRangeEnd=0, loopLength=100;
-        imgRangeStart = this.state.imgRange['start'];
-        imgRangeEnd = this.state.imgRange.end;
-        loopLength = imgRangeEnd-imgRangeStart;
-        for (var i = 0; i <= loopLength; i++) {
-            objImg[i] = {imgUrl:`https://picsum.photos/id/${imgRangeStart}/400`,id: imgRangeStart};
-            objImgEng[i] = { id: imgRangeStart,
-                imgUrl:`http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/${imgRangeStart}/400`,
-                imgEngUrl:'http://pwrdtest.powerweaveonline.com/',
-                picUrl:`https://picsum.photos/id/${imgRangeStart}/400`};
-            imgRangeStart++;
-        }
-        this.setState((state, props) => ({
-            ...state,
-            ...state.imgData = objImg,
-            ...state.imgEngData = objImgEng
-        }));
+        //console.log('componentWillMount');
+        this.updateImages();
     }
 
     componentDidMount(){
         //console.log('componentDidMount',this.state);
     }
-
-    clickHandle(e){
-        e.preventDefault();
-        //console.log('clickHandle',e);
+    componentDidUpdate(){
+        //console.log('componentDidUpdate',this.state);
     }
+    
+    componentWillReceiveProps(nextProps,prevProps) {
+        //console.log('componentWillReceiveProps',this.state,nextProps);        
+        // if(nextProps.value !== this.props.value) {
+        // }
+    }
+
+    async updateImages(){        
+        let objImg=[], objImgEng=[], imgRangeStart=0, imgRangeEnd=0, loopLength=0;
+        imgRangeStart = this.state.imgRange.start;
+        imgRangeEnd = this.state.imgRange.end;
+        loopLength = imgRangeEnd-imgRangeStart;
+
+        for (var i = 0; i <= loopLength; i++) {
+            let picUrl = `https://picsum.photos/id/${imgRangeStart}/400`;
+            let res = await this.getImgInfo(picUrl);
+            if (res.hasOwnProperty('status') && res.status===200) {
+                objImg[i] = {imgUrl:picUrl,id: imgRangeStart};
+                objImgEng[i] = { id: imgRangeStart,
+                    imgUrl:`http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/${imgRangeStart}/400`,
+                    imgEngUrl:'http://pwrdtest.powerweaveonline.com/',
+                    picUrl};                
+            }
+            else{
+                console.log('img not found',imgRangeStart);
+                loopLength++;
+            }
+            imgRangeStart++;
+        }
+
+        var filObjImg = objImg.filter(el => el!= null);
+        this.setState((state, props) => ({
+            imgData: filObjImg,
+            imgEngData: objImgEng
+        }));
+    }
+
+    getImgInfo = async (url) => {
+        try {
+            const result = axios(url).then(data => data).catch(err => err);
+            const [res] = await Promise.all([result]);
+            return res;            
+        } catch (error) {
+            console.log('getImgInfo error',error);
+            return error;
+        }
+    };
+
     changeDirective(e){
         e.preventDefault();
         let directive = e.target.value;
@@ -58,13 +91,26 @@ export default class ImgListContainer extends Component {
         }
     }
 
+    imgSortList(e){
+        e.preventDefault();
+        let range = e.target.value.split("-");
+        var first = range[0],second = range[1];
+        this.setState((previousState, currentProps) =>{
+            return {
+                imgRange: {start:first,end:second}
+            };
+        },()=>{
+            this.updateImages();
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
                 <ImgListComponent
-                    clickHandle = {this.clickHandle}
                     imgData = {this.state.imgData}
                     imgEngData = {this.state.imgEngData}
+                    imgSortList= {this.imgSortList}
                     changeDirective = {this.changeDirective}
                 />
             </React.Fragment>
