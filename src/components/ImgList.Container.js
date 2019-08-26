@@ -46,9 +46,9 @@ export default class ImgListContainer extends Component {
             if (res.hasOwnProperty('status') && res.status===200) {
                 objImg[i] = {imgUrl:picUrl,id: imgRangeStart};
                 objImgEng[i] = { id: imgRangeStart,
-                    imgUrl:`http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/${imgRangeStart}/400`,
-                    imgEngUrl:'http://pwrdtest.powerweaveonline.com/',
-                    picUrl};                
+                    imgUrl: `http://pwrdtest.powerweaveonline.com/r_0/https://picsum.photos/id/${imgRangeStart}/400`,
+                    imgEngUrl: 'http://pwrdtest.powerweaveonline.com/',
+                    picUrl};
             }
             else{
                 console.log('img not found',imgRangeStart);
@@ -90,19 +90,27 @@ export default class ImgListContainer extends Component {
             }
         }
     }
+    
+    // imgSortList(e){
+    //     e.preventDefault();
+    //     let range = e.target.value.split("-");
+    //     var first = range[0],second = range[1];
+    //     this.setState((previousState, currentProps) =>{
+    //         return {
+    //             imgRange: {start:first,end:second}
+    //         };
+    //     },()=>{
+    //         this.updateImages();
+    //     });
+    // }
 
     imgSortList(e){
         e.preventDefault();
         let range = e.target.value.split("-");
         var first = range[0],second = range[1];
-        this.setState((previousState, currentProps) =>{
-            return {
-                imgRange: {start:first,end:second}
-            };
-        },()=>{
-            this.updateImages();
-        });
+        this.setState(prevState => ({imgRange: {start: first, end: second}}), this.updateImages);
     }
+
 
     render() {
         return (
