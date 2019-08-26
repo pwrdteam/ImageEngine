@@ -20,6 +20,11 @@ img {
     margin: 0;
     padding: 0;
     max-width: 100%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 #usr-opt {
